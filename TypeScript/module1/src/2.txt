@@ -1,0 +1,8 @@
+I can download any version of node for team project & it can be installed by the terminal & node js download funciton
+
+some command:
+    nvm list (for checking all the list of the download version)
+    nvm use <version name> (for use the version)
+    these versions can be used temporarily
+
+download TS for globally use it

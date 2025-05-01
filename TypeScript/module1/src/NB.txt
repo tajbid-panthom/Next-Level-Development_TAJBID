@@ -1,0 +1,10 @@
+use: tsc --init for configure the ts
+
+rootDir need to change use the source ts file and basically use the folder src to  store the ts file 
+
+outDir also need to change use store the compiled ts code which is converted into js and basically we called the function dist
+
+the file we selected to run from the source folder only use tsc command . no need to mention the file name
+
+
+ts-node-dev package for running ts in node
