@@ -1,4 +1,4 @@
-//nullable types || unknown types
+{//nullable types || unknown types
 
 const searchName =(value:string | null)=>{
     if(value){
@@ -32,4 +32,4 @@ function throwError(message:string):never{
     throw new Error(message);
 }
 
-throwError("This is an error message");
+throwError("This is an error message");}
