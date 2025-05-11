@@ -1,0 +1,15 @@
+A key is a field or a combination of field in database to uniquely identify a record.
+
+Super key : A super key is a combination of one or more fields in a table that uniquely identifies each record in
+the table.
+
+Candidate Key: A candidate key is a super key that has no redundant fields. It is a minimal super key.
+
+Primary Key: A primary key is a candidate key that is chosen by the database designer to uniquely identify each record in
+the table.
+Alternate Key : An alternate key is a candidate key that is not chosen as the primary key.
+
+Composite Key : A composite key is a primary key that consists of more than one field.
+
+Foreign Key : A foreign key is a field or a combination of fields in a table that refers to the primary key
+of another table.

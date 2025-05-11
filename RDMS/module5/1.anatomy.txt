@@ -1,0 +1,16 @@
+A database can be also called a relation
+
+Every user or other thinks are entity
+
+The columns are called attribute
+
+The columns can be with constrains or domain is called a field
+
+All the columns are called degree
+
+row is also called tuple & record
+
+All the rows are called cardinality
+
+
+

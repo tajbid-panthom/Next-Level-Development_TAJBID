@@ -1,0 +1,3 @@
+step1 : Determining entity
+step2 : Determining attributes of the entity
+step3 : Determining relationships between entities

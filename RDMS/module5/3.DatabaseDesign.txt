@@ -1,0 +1,9 @@
+SDLC - Software development Life Cycle
+
+1-> Planning 2-> Analysis 3-> Design 4-> Implementation 5-> Testing 6-> Deployment 7-> Maintenance 
+
+Techniques to design database:
+1-> Top Down Approach
+2-> Bottom Up Approach
+3-> Hybrid Approach
+
