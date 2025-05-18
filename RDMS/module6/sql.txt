@@ -1,0 +1,3 @@
+create database test;
+alter database test rename to tj;
+drop database tj;

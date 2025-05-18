@@ -1,0 +1,19 @@
+\l to find all the db list
+\d to see all the table
+\c "db" to connect the specified db
+
+table creation same as sql
+
+\! clear  to clear the terminal
+\dn to see the list of schema
+\conninfo to see the connected database
+\du to see all the user
+
+Giving permission:
+    grant all privileges on table t to user1
+    grant all privileges on all tables in schema public to user1
+    grant select on table t to user1
+    revoke select on table t from user1
+    create user user1 wit encrypted password 'password';
+    grant select on all tables  in schema public to role1;
+    grant role1 to user2;

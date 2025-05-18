@@ -1,0 +1,48 @@
+select :retrieves data from one or more table
+from : specifies the table(s) to retrieve data from
+where : specifies the conditions for which data to retrieve
+order by: specifies the order in which to retrieve the data
+group by : groups the data by one or more columns
+having : specifies the conditions for which grouped data to display 
+join: combines rows from two or more tables based on a related column between them
+distinct: returns only unique rows
+limit: limits the number of rows returned
+offset: specifies which row to start returning from
+union: returns all rows from two or more SELECT statements
+intersect: returns rows that are common to two or more SELECT statements
+except: returns rows that are in one SELECT statement but not in another
+
+SELECT column1, column2, ...
+FROM table_name
+[WHERE condition]
+[GROUP BY column]
+[HAVING condition]
+[ORDER BY column ASC|DESC]
+[LIMIT number];
+
+
+
+✅ Scalar Functions
+| Function     | Description                         | Example                     |
+| ------------ | ----------------------------------- | --------------------------- |
+| `UPPER()`    | Converts text to uppercase          | `UPPER('hello') → 'HELLO'`  |
+| `LOWER()`    | Converts text to lowercase          | `LOWER('SQL') → 'sql'`      |
+| `LENGTH()`   | Returns length of a string          | `LENGTH('hello') → 5`       |
+| `ROUND()`    | Rounds a number                     | `ROUND(3.1415, 2) → 3.14`   |
+| `NOW()`      | Returns current timestamp           | `NOW()`                     |
+| `COALESCE()` | Returns the first non-null argument | `COALESCE(NULL, 'X') → 'X'` |
+
+✅ Aggregate Functions
+
+| Function  | Description         | Example                 |
+| --------- | ------------------- | ----------------------- |
+| `COUNT()` | Counts rows         | `COUNT(*) → total rows` |
+| `SUM()`   | Sums numeric values | `SUM(salary)`           |
+| `AVG()`   | Calculates average  | `AVG(age)`              |
+| `MAX()`   | Finds maximum value | `MAX(score)`            |
+| `MIN()`   | Finds minimum value | `MIN(score)`            |
+
+
+LIKE 'a%'    → matches any string starting with 'a'  
+LIKE '%a'    → matches any string ending with 'a'  
+LIKE '_a%'   → matches any string where the **second letter is 'a'**

@@ -1,0 +1,12 @@
+install postgresql by installer or you will get a huge pain
+
+/Library/PostgreSQL/17/scripts/runpsql.sh; exit
+
+
+
+
+SELECT table_name
+FROM information_schema.tables
+WHERE
+    table_schema = 'public'
+    AND table_type = 'BASE TABLE';
