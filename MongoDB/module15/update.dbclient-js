@@ -1,0 +1,36 @@
+// Active: 1749751740042@@127.0.0.1@27017@practice
+
+db("practice")
+  .collection("user")
+  .find({ _id: ObjectID("6406ad64fc13ae5a4000007d") })
+  .project({ interests: 1 });
+db("practice")
+  .collection("user")
+  .updateOne(
+    { _id: ObjectID("6406ad64fc13ae5a4000007d") },
+    {
+      $set: {
+        age: 21,
+      },
+    }
+  );
+db("practice")
+  .collection("user")
+  .updateOne(
+    { _id: ObjectID("6406ad64fc13ae5a4000007d") },
+    {
+      $addToSet: {
+        interests: "Gaming",
+      },
+    }
+  );
+db("practice")
+  .collection("user")
+  .updateOne(
+    { _id: ObjectID("6406ad64fc13ae5a4000007d") },
+    {
+      $addToSet: {
+        interests: { $each: ["Fishing", "Dancing"] },
+      },
+    }
+  );

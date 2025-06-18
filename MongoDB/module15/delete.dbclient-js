@@ -1,0 +1,80 @@
+// Active: 1749751740042@@127.0.0.1@27017@practice
+db("practice")
+  .collection("user")
+  .find({ _id: new ObjectId("6406ad63fc13ae5a40000065") });
+
+db("practice")
+  .collection("user")
+  .updateOne(
+    {
+      _id: ObjectId("684c016b547bcbe179c5e193"),
+    },
+    {
+      $unset: {
+        age: 0,
+      },
+    }
+  );
+db("practice")
+  .collection("user")
+  .updateOne(
+    {
+      _id: ObjectId("684c016b547bcbe179c5e193"),
+    },
+    {
+      $set: {
+        friends: ["fahim", "Mahin", "Mohi", "Sabbir"],
+      },
+    },
+    { upsert: 1 }
+  );
+db("practice")
+  .collection("user")
+  .updateOne(
+    {
+      _id: ObjectId("684c016b547bcbe179c5e193"),
+    },
+    {
+      $pop: {
+        friends: -1, //1 for last, -1 for first
+      },
+    },
+    { upsert: 1 }
+  );
+db("practice")
+  .collection("user")
+  .updateOne(
+    {
+      _id: ObjectId("684c016b547bcbe179c5e193"),
+    },
+    {
+      $pull: {
+        friends: "Mohi", //1 for last, -1 for first
+      },
+    },
+    { upsert: 1 }
+  );
+db("practice")
+  .collection("user")
+  .updateOne(
+    {
+      _id: ObjectId("684c016b547bcbe179c5e193"),
+    },
+    {
+      $pullall: {
+        friends: ["Mohi", "Sabbir"], //1 for last, -1 for first
+      },
+    },
+    { upsert: 1 }
+  );
+
+db("practice")
+  .collection("user")
+  .updateOne(
+    { _id: ObjectId("6406ad63fc13ae5a40000065"), "education.$.major": "Art" },
+    {
+      $set: {
+        "education.$.major": "CSE",
+      },
+    }
+  );
