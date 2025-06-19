@@ -1,0 +1,77 @@
+// Active: 1750273687489@@127.0.0.1@27017@practice
+
+db("practice").collection("user").find({});
+
+//question 1
+db("practice")
+  .collection("user")
+  .find({ age: { $gt: 30 } })
+  .project({ name: 1, email: 1 });
+
+//question 2
+db("practice")
+  .collection("user")
+  .find({ favoutiteColor: { $in: ["Maroon", "Blue"] } });
+
+//question 3
+db("practice").collection("user").find({ skills: [] });
+
+//question 4
+db("practice")
+  .collection("user")
+  .find({
+    $and: [{ "skills.name": "JAVASCRIPT" }, { "skills.name": "JAVA" }],
+    gender: "Male",
+  });
+
+//question 5
+db("practice")
+  .collection("user")
+  .find({ _id: new ObjectId("6406ad63fc13ae5a40000067") });
+db("practice")
+  .collection("user")
+  .updateOne(
+    {
+      _id: new ObjectId("6406ad63fc13ae5a40000067"),
+      email: "amccurry3@cnet.com",
+    },
+    {
+      $addToSet: {
+        skills: {
+          name: "Python",
+          level: "Beginner",
+          isLearning: true,
+        },
+      },
+    }
+  );
+
+// question 6
+db("practice")
+  .collection("user")
+  .find({ _id: new ObjectId("6406ad63fc13ae5a40000067") });
+
+db("practice")
+  .collection("user")
+  .updateOne(
+    { _id: new ObjectId("6406ad63fc13ae5a40000067") },
+    {
+      $addToSet: {
+        languages: "Spanish",
+      },
+    }
+  );
+
+// question 7
+db("practice")
+  .collection("user")
+  .updateOne(
+    { _id: new ObjectId("6406ad63fc13ae5a40000067") },
+    {
+      $pull: {
+        skills: {
+          name: "KOTLIN",
+        },
+      },
+    }
+  );

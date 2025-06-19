@@ -1,0 +1,136 @@
+// Active: 1750273687489@@127.0.0.1@27017@practice
+
+//basic
+db("practice").collection("massive").aggregate([]).limit(10);
+
+// question1
+db("practice")
+  .collection("massive")
+  .aggregate([
+    { $match: { isActive: true } },
+    {
+      $group: {
+        _id: "$gender",
+        count: { $sum: 1 },
+        checkActive: { $push: "$isActive" },
+      },
+    },
+  ]);
+
+// question2
+db("practice")
+  .collection("massive")
+  .aggregate([
+    { $match: { isActive: true, favoriteFruit: "banana" } },
+    {
+      $group: {
+        _id: "$gender",
+        count: { $sum: 1 },
+        name: { $push: "$name" },
+        email: { $push: "$email" },
+      },
+    },
+  ]);
+
+// question3
+db("practice")
+  .collection("massive")
+  .aggregate([
+    {
+      $group: {
+        _id: "$favoriteFruit",
+        count: { $sum: 1 },
+        avgAge: { $avg: "$age" },
+      },
+    },
+    { $sort: { avgAge: -1 } },
+  ]);
+
+// question4
+
+db("practice")
+  .collection("massive")
+  .aggregate([
+    { $match: { "friends.0": { $exists: true } } },
+    { $unwind: "$friends" },
+    {
+      $match: { "friends.name": /^W/i },
+    },
+    {
+      $group: {
+        _id: "friends.name",
+        count: { $sum: 1 },
+        UniqueFriends: { $push: "$friends.name" },
+      },
+    },
+    { $project: { count: 1, UniqueFriends: 1 } },
+  ]);
+db("practice")
+  .collection("massive")
+  .distinct("friends.name", {
+    "friends.0": { $exists: true },
+    "friends.name": /^W/i,
+  });
+
+//question 5
+db("practice")
+  .collection("massive")
+  .aggregate([
+    {
+      $facet: {
+        below30: [
+          {
+            $bucket: {
+              groupBy: "$age",
+              boundaries: [5, 10, 15, 20, 25, 30],
+              default: "Other",
+              output: {
+                count: { $sum: 1 },
+                avgAge: { $avg: "$age" },
+              },
+            },
+          },
+          { $sort: { avgAge: -1 } },
+        ],
+        above30: [
+          {
+            $bucket: {
+              groupBy: "$age",
+              boundaries: [30, 35, 40, 45, 50, 55, 60],
+              default: "Other",
+              output: {
+                count: { $sum: 1 },
+                avgAge: { $avg: "$age" },
+              },
+            },
+          },
+          { $sort: { avgAge: -1 } },
+        ],
+      },
+    },
+  ]);
+
+// question 6
+db("practice")
+  .collection("massive")
+  .aggregate([
+    {
+      $group: {
+        _id: "$company",
+        totalBalance: { $sum: "$balance" },
+      },
+    },
+    {
+      $sort: { totalBalance: -1 },
+    },
+    {
+      $limit: 2,
+    },
+    {
+      $project: {
+        _id: 0,
+        company: "$_id",
+        totalBalance: 1,
+      },
+    },
+  ]);
