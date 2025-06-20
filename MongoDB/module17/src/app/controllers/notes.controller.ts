@@ -3,16 +3,6 @@ import { Note } from "../models/notes.model";
 export const notesRouter = Router();
 notesRouter.post("/create-note", async (req: Request, res: Response) => {
   const body = req.body;
-  //approach 1
-  //   const myNote = new Note({
-  //     title: "Learning express",
-  //     tags: {
-  //       label: "database",
-  //     },
-  //   });
-  // await myNote.save();
-
-  //approach 2
   const note = await Note.create(body);
 
   res.status(201).json({
@@ -22,7 +12,7 @@ notesRouter.post("/create-note", async (req: Request, res: Response) => {
   });
 });
 notesRouter.get("/", async (req: Request, res: Response) => {
-  const notes = await Note.find({});
+  const notes = await Note.find({}).populate("userId");
 
   res.status(201).json({
     message: "Notes Retrieved Successfully",
@@ -62,7 +52,8 @@ notesRouter.patch("/:id", async (req: Request, res: Response) => {
 });
 notesRouter.delete("/:id", async (req: Request, res: Response) => {
   const id = req.params.id;
-  const note = await Note.findByIdAndDelete(id);
+  // const note = await Note.findByIdAndDelete(id);
+  const note = await Note.findOneAndDelete({ _id: id });
 
   res.status(201).json({
     message: "Note Deleted Successfully",
