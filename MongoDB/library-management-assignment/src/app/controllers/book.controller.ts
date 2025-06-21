@@ -49,7 +49,9 @@ bookRoute.get("/", async (req: Request, res: Response) => {
     const data = await Book.find({ genre: filter })
       .sort({ [sortBy]: sort })
       .limit(parseInt(limit as string) || 10);
-
+    if (!data) {
+      throw new Error("Book not found");
+    }
     res.status(200).json({
       success: true,
       message: "Books retrieved successfully",
@@ -59,7 +61,9 @@ bookRoute.get("/", async (req: Request, res: Response) => {
     res.status(400).json({
       message: "Books retrieved Failed",
       success: false,
-      error,
+      error: {
+        message: (error as Error).message,
+      },
     });
   }
 });
