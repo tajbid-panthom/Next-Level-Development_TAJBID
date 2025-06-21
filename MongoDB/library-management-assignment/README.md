@@ -23,18 +23,37 @@ Before running this project, make sure you have the following installed:
 ## 🛠️ Installation
 
 1. **Clone the repository**
+
    ```bash
-   git clone https://github.com/tajbid-panthom/Next-Level-Development_TAJBID/tree/main/MongoDB/library-management-assignment/
-   cd library-management-assignment
+   git clone --no-checkout https://github.com/tajbid-panthom/Next-Level-Development_TAJBID.git
+   cd Next-Level-Development_TAJBID
+
+   # Enable sparse checkout
+
+   git sparse-checkout init --cone
+
+   # Specify the folder you want to checkout
+
+   git sparse-checkout set MongoDB/library-management-assignment
+
+   # Now checkout
+
+   git checkout main
+
+   cd Next-Level-Development_TAJBID/MongoDB/library-management-assignment
    ```
 
+````
+
 2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+
+```bash
+npm install
+````
 
 3. **Environment Setup**
    Create a `.env` file in the root directory:
+
    ```env
    PORT=3000
    MONGO_URI=mongodb://localhost:27017/library-management
@@ -43,6 +62,7 @@ Before running this project, make sure you have the following installed:
    ```
 
 4. **Run the development server**
+
    ```bash
    npm run dev
    ```
@@ -70,6 +90,7 @@ mongoimport --db library-management --collection books --file "demo data.json" -
 ```
 
 Or using MongoDB Compass:
+
 1. Open MongoDB Compass
 2. Connect to your database
 3. Select the `books` collection
@@ -80,6 +101,7 @@ Or using MongoDB Compass:
 ## 📚 API Documentation
 
 ### Base URL
+
 ```
 http://localhost:3000/api
 ```
@@ -87,11 +109,13 @@ http://localhost:3000/api
 ### Book Endpoints
 
 #### 1. Create a Book
+
 ```http
 POST /books
 ```
 
 **Request Body:**
+
 ```json
 {
   "title": "Book Title",
@@ -107,32 +131,38 @@ POST /books
 **Supported Genres:** `FICTION`, `NON_FICTION`, `SCIENCE`, `HISTORY`, `BIOGRAPHY`, `FANTASY`
 
 #### 2. Get All Books
+
 ```http
 GET /books
 ```
 
 **Query Parameters:**
+
 - `filter`: Filter by genre (e.g., `?filter=FICTION`)
 - `sortBy`: Sort field (default: `createdAt`)
 - `sort`: Sort order (`asc` or `desc`, default: `asc`)
 - `limit`: Number of results (default: 10)
 
 **Example:**
+
 ```http
 GET /books?filter=FICTION&sortBy=title&sort=asc&limit=5
 ```
 
 #### 3. Get Single Book
+
 ```http
 GET /books/:bookId
 ```
 
 #### 4. Update Book
+
 ```http
 PATCH /books/:bookId
 ```
 
 #### 5. Delete Book
+
 ```http
 DELETE /books/:bookId
 ```
@@ -140,11 +170,13 @@ DELETE /books/:bookId
 ### Borrow Endpoints
 
 #### 1. Borrow a Book
+
 ```http
 POST /borrow
 ```
 
 **Request Body:**
+
 ```json
 {
   "book": "bookId",
@@ -156,6 +188,7 @@ POST /borrow
 **Note:** The due date must be in the future.
 
 #### 2. Get Borrowed Books Summary
+
 ```http
 GET /borrow
 ```
@@ -165,6 +198,7 @@ Returns an aggregated summary of all borrowed books with total quantities.
 ## 🗄️ Database Schema
 
 ### Book Schema
+
 ```typescript
 {
   title: string (required)
@@ -180,6 +214,7 @@ Returns an aggregated summary of all borrowed books with total quantities.
 ```
 
 ### Borrow Schema
+
 ```typescript
 {
   book: ObjectId (ref: 'Book', required)
@@ -245,4 +280,4 @@ If you encounter any issues or have suggestions, please open an issue on the rep
 
 ## 📞 Support
 
-For support and questions, please contact the author or create an issue in the repository. 
+For support and questions, please contact the author or create an issue in the repository.
