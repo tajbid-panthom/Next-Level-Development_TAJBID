@@ -111,7 +111,7 @@ http://localhost:3000/api
 #### 1. Create a Book
 
 ```http
-POST /books
+POST /api/books
 ```
 
 **Request Body:**
@@ -133,7 +133,7 @@ POST /books
 #### 2. Get All Books
 
 ```http
-GET /books
+GET /api/books
 ```
 
 **Query Parameters:**
@@ -146,25 +146,25 @@ GET /books
 **Example:**
 
 ```http
-GET /books?filter=FICTION&sortBy=title&sort=asc&limit=5
+GET /api/books?filter=FICTION&sortBy=title&sort=asc&limit=5
 ```
 
 #### 3. Get Single Book
 
 ```http
-GET /books/:bookId
+GET /api/books/:bookId
 ```
 
 #### 4. Update Book
 
 ```http
-PATCH /books/:bookId
+PATCH /api/books/:bookId
 ```
 
 #### 5. Delete Book
 
 ```http
-DELETE /books/:bookId
+DELETE /api/books/:bookId
 ```
 
 ### Borrow Endpoints
@@ -172,7 +172,7 @@ DELETE /books/:bookId
 #### 1. Borrow a Book
 
 ```http
-POST /borrow
+POST /api/borrow
 ```
 
 **Request Body:**
@@ -190,7 +190,7 @@ POST /borrow
 #### 2. Get Borrowed Books Summary
 
 ```http
-GET /borrow
+GET /api/borrow
 ```
 
 Returns an aggregated summary of all borrowed books with total quantities.
