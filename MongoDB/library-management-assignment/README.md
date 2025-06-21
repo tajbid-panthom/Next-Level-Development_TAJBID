@@ -40,16 +40,18 @@ Before running this project, make sure you have the following installed:
 
    git checkout main
 
-   cd Next-Level-Development_TAJBID/MongoDB/library-management-assignment
+   cd MongoDB/library-management-assignment
    ```
 
-````
+```
+
+```
 
 2. **Install dependencies**
 
 ```bash
 npm install
-````
+```
 
 3. **Environment Setup**
    Create a `.env` file in the root directory:
