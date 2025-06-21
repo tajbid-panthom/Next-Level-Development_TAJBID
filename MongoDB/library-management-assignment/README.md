@@ -43,15 +43,13 @@ Before running this project, make sure you have the following installed:
    cd MongoDB/library-management-assignment
    ```
 
-```
-
-```
+````
 
 2. **Install dependencies**
 
 ```bash
 npm install
-```
+````
 
 3. **Environment Setup**
    Create a `.env` file in the root directory:
